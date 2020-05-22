@@ -19,6 +19,7 @@ class Process {
 
  private:
     int pid_;
+    float cpu_;
     std::string user_;
 };
 
