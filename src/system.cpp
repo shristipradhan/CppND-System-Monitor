@@ -20,17 +20,18 @@ Processor& System::Cpu() {
 
 // Return a container composed of the system's processes
 vector<Process>& System::Processes() {
-    std::vector<int> pids = LinuxParser::Pids();
+    vector<int> pids = LinuxParser::Pids();
     for (auto const& it : pids)
     {
        Process p(it);
        processes_.push_back(p);
     }
+    std::sort(processes_.begin(), processes_.end());
     return processes_;
 }
 
 // Return the system's kernel identifier (string)
-std::string System::Kernel() {
+string System::Kernel() {
    return LinuxParser::Kernel();
 }
 
@@ -40,7 +41,7 @@ float System::MemoryUtilization() {
 }
 
 // Return the operating system name
-std::string System::OperatingSystem() {
+string System::OperatingSystem() {
      return LinuxParser::OperatingSystem();
 }
 

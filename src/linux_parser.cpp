@@ -269,7 +269,8 @@ string LinuxParser::Ram(int pid) {
     while (std::getline(filestream, line)) {
      std::istringstream linestream(line);
       while (linestream >> key >> value) {
-        if (key == "VmSize:") {
+        // VmData gives physical memory used. VmSize gives virtual memory usage.
+        if (key == "VmData:") {
           memTotal = value;
           break;
         }
